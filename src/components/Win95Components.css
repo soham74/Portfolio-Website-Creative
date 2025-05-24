@@ -1,0 +1,154 @@
+/* Windows 95 Button */
+.win95-button {
+  background: #c0c0c0;
+  border: 2px outset #c0c0c0;
+  font-family: 'MS Sans Serif', sans-serif;
+  font-size: 11px;
+  padding: 4px 8px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 20px;
+  color: #000;
+}
+
+.win95-button:hover:not(:disabled) {
+  background: #d0d0d0;
+}
+
+.win95-button:active,
+.win95-button.win95-button-active {
+  border: 2px inset #c0c0c0;
+  background: #a0a0a0;
+}
+
+.win95-button:disabled,
+.win95-button.win95-button-disabled {
+  color: #808080;
+  cursor: default;
+  background: #c0c0c0;
+}
+
+.win95-button.win95-button-sm {
+  font-size: 10px;
+  padding: 2px 6px;
+  min-height: 16px;
+}
+
+/* Windows 95 Window */
+.win95-window {
+  background: #c0c0c0;
+  border: 2px outset #c0c0c0;
+  font-family: 'MS Sans Serif', sans-serif;
+  font-size: 11px;
+}
+
+.win95-window-header {
+  background: linear-gradient(to right, #000080, #0000c0);
+  color: white;
+  padding: 2px 4px;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #808080;
+}
+
+.win95-window-content {
+  padding: 8px;
+  background: #c0c0c0;
+  overflow: auto;
+}
+
+/* Windows 95 GroupBox */
+.win95-groupbox {
+  margin: 8px 0;
+}
+
+.win95-fieldset {
+  border: 2px inset #c0c0c0;
+  padding: 8px;
+  margin: 0;
+  background: #c0c0c0;
+}
+
+.win95-legend {
+  background: #c0c0c0;
+  padding: 0 4px;
+  font-family: 'MS Sans Serif', sans-serif;
+  font-size: 11px;
+  font-weight: bold;
+  color: #000;
+}
+
+/* Windows 95 Text Input */
+.win95-text-input {
+  border: 2px inset #c0c0c0;
+  background: white;
+  font-family: 'MS Sans Serif', sans-serif;
+  font-size: 11px;
+  padding: 2px 4px;
+  color: #000;
+}
+
+.win95-text-input:focus {
+  outline: none;
+  background: #ffffff;
+}
+
+/* Windows 95 List */
+.win95-list {
+  border: 2px inset #c0c0c0;
+  background: white;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-family: 'MS Sans Serif', sans-serif;
+  font-size: 11px;
+}
+
+.win95-list-item {
+  padding: 4px 8px;
+  cursor: pointer;
+  color: #000;
+  display: flex;
+  align-items: center;
+}
+
+.win95-list-item:hover {
+  background: #000080;
+  color: white;
+}
+
+.win95-list-item:active {
+  background: #000040;
+  color: white;
+}
+
+/* Windows 95 Separator */
+.win95-separator {
+  border: none;
+  height: 2px;
+  background: linear-gradient(to right, #808080, #dfdfdf);
+  margin: 4px 0;
+}
+
+/* Additional utility classes */
+.win95-inset {
+  border: 2px inset #c0c0c0;
+}
+
+.win95-outset {
+  border: 2px outset #c0c0c0;
+}
+
+.win95-sunken {
+  border: 1px inset #c0c0c0;
+  background: #f0f0f0;
+}
+
+.win95-raised {
+  border: 1px outset #c0c0c0;
+  background: #c0c0c0;
+} 

@@ -1,0 +1,19 @@
+@font-face {
+  font-family: 'MS Sans Serif Bold';
+  src: url('./ms-sans-serif-b.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Jersey 10';
+  src: url('./Jersey10-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Define which font to use as primary */
+:root {
+  --primary-font: 'MS Sans Serif Bold', 'MS Sans Serif', sans-serif;
+  --accent-font: 'Jersey 10', monospace;
+} 

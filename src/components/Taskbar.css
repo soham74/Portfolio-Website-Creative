@@ -1,0 +1,233 @@
+.taskbar {
+  height: 40px;
+  background: #c0c0c0;
+  border-top: 1px solid #dfdfdf;
+  border-left: 1px solid #dfdfdf;
+  border-right: 1px solid #808080;
+  border-bottom: 1px solid #808080;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  font-family: var(--primary-font);
+  font-size: 11px;
+}
+
+.taskbar-left {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  gap: 2px;
+}
+
+.start-button {
+  display: flex !important;
+  align-items: center;
+  gap: 4px;
+  font-weight: bold;
+  min-width: 54px;
+  height: 32px;
+  padding: 4px 8px !important;
+  font-family: var(--primary-font) !important;
+  font-size: 11px !important;
+}
+
+.start-icon-image {
+  width: 16px;
+  height: 16px;
+  filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.3));
+}
+
+.start-icon-fallback {
+  font-size: 16px;
+  line-height: 1;
+}
+
+.start-text {
+  font-family: var(--primary-font);
+  font-weight: bold;
+  font-size: 13px;
+  letter-spacing: 0.5px;
+}
+
+.start-icon {
+  font-size: 16px;
+  line-height: 1;
+}
+
+.taskbar-separator {
+  width: 2px;
+  height: 32px;
+  background: linear-gradient(to right, #808080, #dfdfdf);
+  margin: 0 4px;
+}
+
+.taskbar-windows {
+  display: flex;
+  gap: 2px;
+  flex: 1;
+  overflow-x: auto;
+}
+
+.taskbar-window-button {
+  max-width: 160px;
+  min-width: 100px;
+  height: 32px;
+  font-family: var(--primary-font) !important;
+  font-size: 11px !important;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 4px 8px !important;
+}
+
+.taskbar-right {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.taskbar-links {
+  display: flex;
+  gap: 2px;
+  margin-right: 4px;
+}
+
+.taskbar-link-button {
+  background: #c0c0c0;
+  border: 1px outset #c0c0c0;
+  padding: 4px;
+  height: 32px;
+  width: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.1s;
+}
+
+.taskbar-link-button:hover {
+  background: #d0d0d0;
+}
+
+.taskbar-link-button:active {
+  border: 1px inset #c0c0c0;
+  background: #b0b0b0;
+}
+
+.taskbar-link-icon {
+  width: 16px;
+  height: 16px;
+  filter: drop-shadow(0px 0px 1px rgba(0, 0, 0, 0.5));
+}
+
+.system-tray {
+  background: #c0c0c0;
+  border-left: 1px solid #808080;
+  border-top: 1px solid #808080;
+  border-right: 1px solid #dfdfdf;
+  border-bottom: 1px solid #dfdfdf;
+  padding: 4px 8px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+}
+
+.clock {
+  font-family: var(--primary-font);
+  font-size: 11px;
+  color: #000;
+  white-space: nowrap;
+  min-width: 60px;
+  text-align: center;
+  font-weight: bold;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .taskbar {
+    height: 36px;
+    padding: 1px;
+  }
+  
+  .start-button {
+    min-width: 50px;
+    height: 30px;
+    font-size: 10px !important;
+    padding: 2px 6px !important;
+  }
+  
+  .start-text {
+    font-size: 11px;
+  }
+  
+  .start-icon-image {
+    width: 14px;
+    height: 14px;
+  }
+  
+  .start-icon-fallback {
+    font-size: 14px;
+  }
+  
+  .start-icon {
+    font-size: 14px;
+  }
+  
+  .taskbar-separator {
+    height: 30px;
+    margin: 0 2px;
+  }
+  
+  .taskbar-window-button {
+    max-width: 120px;
+    min-width: 80px;
+    height: 30px;
+    font-size: 10px !important;
+    padding: 2px 6px !important;
+  }
+  
+  .taskbar-link-button {
+    height: 28px;
+    width: 28px;
+    padding: 2px;
+  }
+  
+  .taskbar-link-icon {
+    width: 14px;
+    height: 14px;
+  }
+  
+  .system-tray {
+    height: 30px;
+    padding: 2px 6px;
+  }
+  
+  .clock {
+    font-size: 10px;
+    min-width: 50px;
+  }
+}
+
+/* Scrollbar for window buttons on mobile */
+.taskbar-windows::-webkit-scrollbar {
+  height: 4px;
+}
+
+.taskbar-windows::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.taskbar-windows::-webkit-scrollbar-thumb {
+  background: #808080;
+  border-radius: 2px;
+}
+
+.taskbar-windows::-webkit-scrollbar-thumb:hover {
+  background: #606060;
+} 

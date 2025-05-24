@@ -1,0 +1,39 @@
+import React from 'react';
+import ProjectsWindow from './windows/ProjectsWindow';
+import ResumeWindow from './windows/ResumeWindow';
+import AboutWindow from './windows/AboutWindow';
+import ContactWindow from './windows/ContactWindow';
+import SkillsWindow from './windows/SkillsWindow';
+import GitHubWindow from './windows/GitHubWindow';
+import LinkedInWindow from './windows/LinkedInWindow';
+import GamesWindow from './windows/GamesWindow';
+
+const WindowContentRenderer = ({ component }) => {
+  switch (component) {
+    case 'ProjectsWindow':
+      return <ProjectsWindow />;
+    case 'ResumeWindow':
+      return <ResumeWindow />;
+    case 'AboutWindow':
+      return <AboutWindow />;
+    case 'ContactWindow':
+      return <ContactWindow />;
+    case 'SkillsWindow':
+      return <SkillsWindow />;
+    case 'GitHubWindow':
+      return <GitHubWindow />;
+    case 'LinkedInWindow':
+      return <LinkedInWindow />;
+    case 'GamesWindow':
+      return <GamesWindow />;
+    default:
+      return (
+        <div>
+          <h3>Unknown Window Type</h3>
+          <p>The requested window content could not be found.</p>
+        </div>
+      );
+  }
+};
+
+export default WindowContentRenderer; 

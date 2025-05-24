@@ -1,0 +1,101 @@
+.start-menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 999;
+  background: transparent;
+}
+
+.start-menu {
+  position: fixed;
+  bottom: 40px;
+  left: 2px;
+  width: 200px;
+  background: #c0c0c0;
+  border: 2px outset #c0c0c0;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  z-index: 1001;
+  font-family: 'MS Sans Serif', sans-serif;
+  font-size: 11px;
+}
+
+.start-menu-header {
+  background: linear-gradient(to right, #000080, #0000c0);
+  color: white;
+  padding: 8px;
+  font-weight: bold;
+}
+
+.start-menu-user {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.user-icon {
+  font-size: 16px;
+}
+
+.user-name {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.start-menu-content {
+  padding: 2px;
+}
+
+.start-menu-item {
+  display: flex !important;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 8px !important;
+  cursor: pointer;
+  font-family: 'MS Sans Serif', sans-serif !important;
+  font-size: 11px !important;
+  border: none !important;
+  background: transparent !important;
+}
+
+.start-menu-item:hover {
+  background: #000080 !important;
+  color: white !important;
+}
+
+.menu-item-icon {
+  font-size: 16px;
+  width: 16px;
+  text-align: center;
+}
+
+.menu-item-label {
+  flex: 1;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .start-menu {
+    bottom: 36px;
+    width: 180px;
+  }
+  
+  .start-menu-header {
+    padding: 6px;
+  }
+  
+  .user-name {
+    font-size: 11px;
+  }
+  
+  .start-menu-item {
+    padding: 6px 8px !important;
+    font-size: 12px !important;
+  }
+  
+  .menu-item-icon {
+    font-size: 14px;
+    width: 14px;
+  }
+} 

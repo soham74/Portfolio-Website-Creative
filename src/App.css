@@ -1,0 +1,123 @@
+@import url('./assets/fonts/fonts.css');
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--primary-font);
+  font-size: 11px;
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+}
+
+.app {
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+  background-color: #008080; /* Fallback color */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Add gradient overlay and grainy texture to match the example */
+.app::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    /* Noise texture */
+    radial-gradient(circle at 1px 1px, rgba(0,0,0,0.15) 1px, transparent 0),
+    /* Grain pattern */
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.08) 0%,
+      rgba(255, 255, 255, 0.03) 25%,
+      rgba(0, 0, 0, 0.02) 50%,
+      rgba(0, 0, 0, 0.05) 75%,
+      rgba(0, 0, 0, 0.08) 100%
+    );
+  background-size: 2px 2px, 100% 100%;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.4;
+}
+
+/* Add additional grain effect */
+.app::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(circle at 25% 25%, transparent 0%, rgba(0,0,0,0.1) 1%, transparent 2%),
+    radial-gradient(circle at 75% 75%, transparent 0%, rgba(255,255,255,0.1) 1%, transparent 2%),
+    radial-gradient(circle at 50% 50%, transparent 0%, rgba(0,0,0,0.05) 1%, transparent 2%);
+  background-size: 3px 3px, 4px 4px, 2px 2px;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.3;
+}
+
+/* Desktop icons and content should be above the grain */
+.desktop-content {
+  position: relative;
+  z-index: 2;
+  flex: 1;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  html, body {
+    overflow: auto;
+  }
+  
+  .app {
+    min-height: 100vh;
+    overflow: auto;
+  }
+  
+  /* On mobile, use a simpler background to avoid performance issues */
+  .app {
+    background-size: cover;
+    background-attachment: scroll;
+  }
+  
+  .app::before,
+  .app::after {
+    opacity: 0.2; /* Reduce grain on mobile */
+  }
+}
+
+/* Custom scrollbar for Windows 95 look */
+::-webkit-scrollbar {
+  width: 16px;
+}
+
+::-webkit-scrollbar-track {
+  background: #c0c0c0;
+  border: 1px solid #808080;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c0c0c0;
+  border: 1px outset #c0c0c0;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a0a0a0;
+}
+
+/* Selection styling */
+::selection {
+  background: #000080;
+  color: white;
+}

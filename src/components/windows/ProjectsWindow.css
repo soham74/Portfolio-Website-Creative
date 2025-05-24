@@ -1,0 +1,106 @@
+.text-editor-container {
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 2px;
+    display: flex;
+    overflow: hidden;
+}
+
+.text-body-container {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    box-sizing: border-box;
+    border-top: 1px solid rgba(139,139,139,1.0);
+    border-left: 1px solid rgba(139,139,139,1.0);
+    border-right: 1px solid rgba(246,246,246,255);
+    border-bottom: 1px solid rgba(246,246,246,255);
+    font-family: var(--primary-font);
+    display: flex;
+}
+
+.text-editor-inner {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    box-sizing: border-box;
+    border-top: 1px solid rgb(75, 75, 75);
+    border-left: 1px solid rgba(75, 75, 75, 0.904);
+    border-right: 1px solid rgba(166,166,166,255);
+    border-bottom: 1px solid rgba(166,166,166,255);
+    background-color: rgba(255, 255, 255, 0.897);
+    scrollbar-width: none;
+    overflow-y: auto;
+    touch-action: pan-y;
+}
+
+.text-container {
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    margin-right: 25px; 
+    /* this prevents text from going behind scroll bar 
+    since scrollbar is absolutely positioned */
+}
+
+.project-title {
+    margin-left: 9px;
+    margin-bottom: 12px;
+    margin-top: 5px;
+    font-size: 1.5rem;
+    font-weight: normal;
+    color: #000;
+    font-family: var(--primary-font);
+}
+
+.project-body {
+    margin-left: 9px;
+    margin-bottom: 12px;
+    font-size: 0.9rem;
+    overflow-wrap: break-word;
+    line-height: 1.4;
+    color: #000;
+    font-family: var(--primary-font);
+    white-space: pre-wrap;
+}
+
+.project-link {
+    color: #0000ff;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.project-link:hover {
+    color: #0000cc;
+}
+
+.text-editor-hr {
+    margin: 0;
+    margin-bottom: 6px;
+    width: calc(100% - 1px);
+    height: 1px;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+    border-left: none;
+    border-right: none;
+}
+
+/* Custom scrollbar for Windows 95 look */
+.text-editor-inner::-webkit-scrollbar {
+    width: 16px;
+}
+
+.text-editor-inner::-webkit-scrollbar-track {
+    background: #c0c0c0;
+    border: 1px solid #808080;
+}
+
+.text-editor-inner::-webkit-scrollbar-thumb {
+    background: #c0c0c0;
+    border: 1px outset #c0c0c0;
+}
+
+.text-editor-inner::-webkit-scrollbar-thumb:hover {
+    background: #a0a0a0;
+} 

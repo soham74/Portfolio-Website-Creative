@@ -1,0 +1,133 @@
+.draggable-window {
+  position: absolute;
+  background: #c0c0c0;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  min-width: 300px;
+  min-height: 200px;
+  max-width: 90vw;
+  max-height: 90vh;
+}
+
+.draggable-window.active {
+  z-index: 1000 !important;
+}
+
+.window-header {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  cursor: move;
+  user-select: none;
+  padding: 2px 4px !important;
+  font-family: 'MS Sans Serif', sans-serif !important;
+  font-size: 11px !important;
+  font-weight: bold !important;
+}
+
+.window-title {
+  flex: 1;
+  padding-left: 4px;
+  color: white;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.window-controls {
+  display: flex;
+  gap: 2px;
+}
+
+.window-control-button {
+  width: 16px !important;
+  height: 14px !important;
+  min-width: 16px !important;
+  min-height: 14px !important;
+  padding: 0 !important;
+  font-size: 10px !important;
+  font-weight: bold !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  line-height: 1 !important;
+}
+
+.close-button {
+  background-color: #ff0000 !important;
+  color: white !important;
+}
+
+.close-button:hover {
+  background-color: #cc0000 !important;
+}
+
+.window-content {
+  padding: 8px !important;
+  font-family: 'MS Sans Serif', sans-serif !important;
+  font-size: 11px !important;
+  overflow: auto;
+  height: calc(100% - 20px);
+  background: #c0c0c0;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .draggable-window {
+    position: fixed !important;
+    top: 50px !important;
+    left: 10px !important;
+    right: 10px !important;
+    bottom: 50px !important;
+    width: auto !important;
+    height: auto !important;
+    max-width: none !important;
+    max-height: none !important;
+    min-width: auto !important;
+    min-height: auto !important;
+  }
+  
+  .window-header {
+    cursor: default;
+  }
+  
+  .window-title {
+    font-size: 12px !important;
+  }
+  
+  .window-control-button {
+    width: 20px !important;
+    height: 18px !important;
+    min-width: 20px !important;
+    min-height: 18px !important;
+    font-size: 12px !important;
+  }
+  
+  .window-content {
+    font-size: 12px !important;
+    padding: 10px !important;
+  }
+}
+
+/* Prevent text selection while dragging */
+.draggable-window:active {
+  user-select: none;
+}
+
+/* Custom scrollbar for window content */
+.window-content::-webkit-scrollbar {
+  width: 16px;
+}
+
+.window-content::-webkit-scrollbar-track {
+  background: #c0c0c0;
+  border: 1px solid #808080;
+}
+
+.window-content::-webkit-scrollbar-thumb {
+  background: #c0c0c0;
+  border: 1px outset #c0c0c0;
+}
+
+.window-content::-webkit-scrollbar-thumb:hover {
+  background: #a0a0a0;
+} 
