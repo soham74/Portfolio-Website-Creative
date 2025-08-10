@@ -7,7 +7,16 @@ import './Window.css';
 const Window = ({ window, isActive, onClose, onMinimize, onFocus }) => {
   const [position, setPosition] = useState({ x: 100 + Math.random() * 200, y: 100 + Math.random() * 150 });
   const [size, setSize] = useState({ width: window.width || 400, height: window.height || 300 });
-  const resizeStateRef = useRef({ isResizing: false, startX: 0, startY: 0, startWidth: 0, startHeight: 0 });
+  const resizeStateRef = useRef({
+    isResizing: false,
+    startX: 0,
+    startY: 0,
+    startWidth: 0,
+    startHeight: 0,
+    startPosX: 0,
+    startPosY: 0,
+    direction: 'br',
+  });
   const nodeRef = useRef(null);
 
   const handleDrag = (e, data) => {
@@ -18,7 +27,7 @@ const Window = ({ window, isActive, onClose, onMinimize, onFocus }) => {
     onFocus();
   };
 
-  const handleResizeMouseDown = (e) => {
+  const handleResizeMouseDown = (direction) => (e) => {
     e.stopPropagation();
     const state = resizeStateRef.current;
     state.isResizing = true;
@@ -26,6 +35,9 @@ const Window = ({ window, isActive, onClose, onMinimize, onFocus }) => {
     state.startY = e.clientY;
     state.startWidth = size.width;
     state.startHeight = size.height;
+    state.startPosX = position.x;
+    state.startPosY = position.y;
+    state.direction = direction;
     document.addEventListener('mousemove', handleResizing);
     document.addEventListener('mouseup', handleResizeMouseUp);
   };
@@ -36,25 +48,60 @@ const Window = ({ window, isActive, onClose, onMinimize, onFocus }) => {
     const deltaX = e.clientX - state.startX;
     const deltaY = e.clientY - state.startY;
 
-    let newWidth = state.startWidth + deltaX;
-    let newHeight = state.startHeight + deltaY;
+    let newWidth = state.startWidth;
+    let newHeight = state.startHeight;
+    let newX = state.startPosX;
+    let newY = state.startPosY;
+
+    const dir = state.direction;
+    if (dir.includes('r')) newWidth = state.startWidth + deltaX;
+    if (dir.includes('l')) {
+      newWidth = state.startWidth - deltaX;
+      newX = state.startPosX + deltaX;
+    }
+    if (dir.includes('b')) newHeight = state.startHeight + deltaY;
+    if (dir.includes('t')) {
+      newHeight = state.startHeight - deltaY;
+      newY = state.startPosY + deltaY;
+    }
 
     const MIN_WIDTH = 320;
     const MIN_HEIGHT = 240;
-    newWidth = Math.max(MIN_WIDTH, newWidth);
-    newHeight = Math.max(MIN_HEIGHT, newHeight);
+    if (newWidth < MIN_WIDTH) {
+      if (dir.includes('l')) newX += newWidth - MIN_WIDTH;
+      newWidth = MIN_WIDTH;
+    }
+    if (newHeight < MIN_HEIGHT) {
+      if (dir.includes('t')) newY += newHeight - MIN_HEIGHT;
+      newHeight = MIN_HEIGHT;
+    }
 
     // Constrain to parent bounds
     const container = nodeRef.current;
     if (container && container.parentElement) {
       const parentRect = container.parentElement.getBoundingClientRect();
-      const maxWidth = parentRect.width - position.x - 8;
-      const maxHeight = parentRect.height - position.y - 8;
-      newWidth = Math.min(newWidth, maxWidth);
-      newHeight = Math.min(newHeight, maxHeight);
+      const maxWidth = parentRect.width - newX - 8;
+      const maxHeight = parentRect.height - newY - 8;
+      if (newWidth > maxWidth) newWidth = maxWidth;
+      if (newHeight > maxHeight) newHeight = maxHeight;
+      if (newX < 0) {
+        if (dir.includes('l')) {
+          newWidth += newX; // shrink width by the amount past the left edge
+        }
+        newX = 0;
+      }
+      if (newY < 0) {
+        if (dir.includes('t')) {
+          newHeight += newY;
+        }
+        newY = 0;
+      }
     }
 
     setSize({ width: newWidth, height: newHeight });
+    if (dir.includes('l') || dir.includes('t')) {
+      setPosition({ x: newX, y: newY });
+    }
   };
 
   const handleResizeMouseUp = () => {
@@ -110,7 +157,15 @@ const Window = ({ window, isActive, onClose, onMinimize, onFocus }) => {
             <WindowContentRenderer component={window.component} />
           </WindowContent>
         </Win95Window>
-        <div className="window-resizer" onMouseDown={handleResizeMouseDown} />
+        {/* Corner and edge resize handles */}
+        <div className="window-resizer br" onMouseDown={handleResizeMouseDown('br')} />
+        <div className="window-resizer tr" onMouseDown={handleResizeMouseDown('tr')} />
+        <div className="window-resizer bl" onMouseDown={handleResizeMouseDown('bl')} />
+        <div className="window-resizer tl" onMouseDown={handleResizeMouseDown('tl')} />
+        <div className="window-resizer r" onMouseDown={handleResizeMouseDown('r')} />
+        <div className="window-resizer l" onMouseDown={handleResizeMouseDown('l')} />
+        <div className="window-resizer b" onMouseDown={handleResizeMouseDown('b')} />
+        <div className="window-resizer t" onMouseDown={handleResizeMouseDown('t')} />
       </div>
     </Draggable>
   );

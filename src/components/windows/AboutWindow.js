@@ -2,7 +2,7 @@ import React from 'react';
 
 const AboutWindow = () => {
   return (
-    <div className="h-full overflow-auto pr-2 text-left bg-white">
+    <div className="about-window h-full overflow-auto pr-2 text-left bg-white">
       {/* Header */}
       <div className="mb-4 border-b border-neutral-200 pb-3">
         <h3 className="m-0 text-lg font-semibold text-neutral-900 flex items-center gap-2">

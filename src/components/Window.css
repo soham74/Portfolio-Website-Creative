@@ -75,17 +75,19 @@
   min-height: 0;
 }
 
-/* Resizer handle (bottom-right corner) */
+/* Invisible resize handles (like desktop windows) */
 .window-resizer {
   position: absolute;
-  width: 14px;
-  height: 14px;
-  right: 2px;
-  bottom: 2px;
-  cursor: nwse-resize;
-  background:
-    linear-gradient(135deg, rgba(0,0,0,0) 50%, #9ca3af 50%) bottom right / 100% 100% no-repeat;
+  background: transparent;
 }
+.window-resizer.br { width: 16px; height: 16px; right: 0; bottom: 0; cursor: nwse-resize; }
+.window-resizer.tr { width: 16px; height: 16px; right: 0; top: 0; cursor: nesw-resize; }
+.window-resizer.bl { width: 16px; height: 16px; left: 0; bottom: 0; cursor: nesw-resize; }
+.window-resizer.tl { width: 16px; height: 16px; left: 0; top: 0; cursor: nwse-resize; }
+.window-resizer.r { width: 6px; right: 0; top: 16px; bottom: 16px; cursor: ew-resize; }
+.window-resizer.l { width: 6px; left: 0; top: 16px; bottom: 16px; cursor: ew-resize; }
+.window-resizer.b { height: 6px; left: 16px; right: 16px; bottom: 0; cursor: ns-resize; }
+.window-resizer.t { height: 6px; left: 16px; right: 16px; top: 0; cursor: ns-resize; }
 
 /* Mobile responsiveness */
 @media (max-width: 768px) {
