@@ -29,12 +29,19 @@ const Taskbar = ({ openWindows, currentTime, onWindowClick, onStartClick }) => {
 
   return (
     <>
-      {showStartMenu && (
-        <StartMenu 
-          onClose={() => setShowStartMenu(false)} 
-          onItemClick={() => setShowStartMenu(false)}
-        />
-      )}
+        {showStartMenu && (
+          <StartMenu 
+            onClose={() => setShowStartMenu(false)} 
+            onItemClick={() => setShowStartMenu(false)}
+            onOpenWindow={(windowData) => {
+              setShowStartMenu(false);
+              // Delegate to parent via window click list? not available here.
+              // Emit a custom event that App listens to.
+              const event = new CustomEvent('openWindowFromStart', { detail: windowData });
+              window.dispatchEvent(event);
+            }}
+          />
+        )}
       <div className="taskbar">
         <div className="taskbar-left">
           <Button
@@ -56,7 +63,34 @@ const Taskbar = ({ openWindows, currentTime, onWindowClick, onStartClick }) => {
           </Button>
           
           <div className="taskbar-separator" />
-          
+          {/* External links moved to the left */}
+          <div className="taskbar-links">
+            <button 
+              className="taskbar-link-button"
+              onClick={() => handleExternalLink('https://www.linkedin.com/in/soham-kolhe-88826b228/')}
+              title="LinkedIn Profile"
+            >
+              <img 
+                src="/images/icons/linkedin.png" 
+                alt="LinkedIn" 
+                className="taskbar-link-icon"
+              />
+            </button>
+            <button 
+              className="taskbar-link-button"
+              onClick={() => handleExternalLink('https://github.com/soham74')}
+              title="GitHub Profile"
+            >
+              <img 
+                src="/images/icons/github.gif" 
+                alt="GitHub" 
+                className="taskbar-link-icon"
+              />
+            </button>
+          </div>
+
+          <div className="taskbar-separator" />
+
           <div className="taskbar-windows">
             {openWindows.map(window => (
               !window.isMinimized && (
@@ -74,31 +108,6 @@ const Taskbar = ({ openWindows, currentTime, onWindowClick, onStartClick }) => {
         </div>
         
         <div className="taskbar-right">
-          <div className="taskbar-links">
-            <button 
-              className="taskbar-link-button"
-              onClick={() => handleExternalLink('https://linkedin.com/in/yourprofile')}
-              title="LinkedIn Profile"
-            >
-              <img 
-                src="/images/icons/linkedin.png" 
-                alt="LinkedIn" 
-                className="taskbar-link-icon"
-              />
-            </button>
-            <button 
-              className="taskbar-link-button"
-              onClick={() => handleExternalLink('https://github.com/yourusername')}
-              title="GitHub Profile"
-            >
-              <img 
-                src="/images/icons/github.gif" 
-                alt="GitHub" 
-                className="taskbar-link-icon"
-              />
-            </button>
-          </div>
-          
           <div className="system-tray">
             <div className="clock">
               {formatTime(currentTime)}

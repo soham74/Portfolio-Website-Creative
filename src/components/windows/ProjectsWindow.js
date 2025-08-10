@@ -2,60 +2,50 @@ import React from 'react';
 import './ProjectsWindow.css';
 
 const ProjectsWindow = () => {
-  const handleLinkClick = (url) => {
-    if (url !== '#') {
-      window.open(url, '_blank');
-    }
-  };
-
   return (
     <div className="text-editor-container">
       <div className="text-body-container">
         <div className="text-editor-inner">
           <div className="text-container">
-            <h1 className="project-title">Battle.us</h1>
+            <h1 className="project-title">AI Chess Bot</h1>
             <p className="project-body">
-              I am currently developing a multiplayer country guessing game Angular, Tailwind, 
-              Node.js, Express.js, and AWS along with libraries such as D3.js, three.js, and 
-              socket.io. Geospatial data was utilized to map countries onto the sphere. (Link: {` `}
-              <a 
-                href="https://www.battle.us" 
-                target="_blank" 
+              Built a chess engine using Minimax with Alpha–Beta pruning to evaluate move trees and
+              simulate strategic depth. Implemented a real‑time GUI with annotated move logic and
+              visual feedback.
+              <br/><br/>
+              <em>Tools:</em> Python, Flask, Pygame, Git
+            </p>
+
+            <hr className="text-editor-hr"/>
+
+            <h1 className="project-title">Stock Sentiment Analyzer</h1>
+            <p className="project-body">
+              Created a pipeline to parse tweets and predict stock direction using logistic
+              regression with weighted keyword features. Achieved 72% accuracy on labeled test data
+              across multiple equity classes.
+              <br/><br/>
+              <em>Tools:</em> Python, NLTK, Twitter API, Pandas, Matplotlib
+            </p>
+
+            <hr className="text-editor-hr"/>
+
+            <h1 className="project-title">Retro Windows Personal Portfolio</h1>
+            <p className="project-body">
+              Developed a personal site emulating a Windows 98 desktop with draggable windows and a
+              boot‑style experience. State handled with Zustand and render performance optimized via
+              memoization and dynamic routing.
+              <br/><br/>
+              <em>Tools:</em> TypeScript, React.js, Tailwind CSS, Zustand, Next.js, Vercel
+              <br/>
+              Link: {` `}
+              <a
+                href="https://soham-kolhe-portfolio.vercel.app/"
+                target="_blank"
                 rel="noopener noreferrer"
                 className="project-link"
               >
-                www.battle.us
-              </a>)
-            </p>
-            
-            <hr className="text-editor-hr"/>
-
-            <h1 className="project-title">Driver Sleep Prevention Device</h1>
-            <p className="project-body">
-              Collaborated with a partner to create an aftermarket sleep detection and prevention 
-              system using OpenCV and dlib in Python. We competed in multiple invention competitions 
-              and worked with a startup accelerator to further develop the product.
-            </p>
-            
-            <hr className="text-editor-hr"/>
-            
-            <h1 className="project-title">PDF Reader</h1>
-            <p className="project-body">
-              Developed a website to automatically process the contents of a PDF using Optical 
-              Character Recognition as opposed to the typical data extraction methods that are 
-              typically much less reliable.
-              <br/><br/>
-              Built with Angular and Django and made use of the py-tesseract and OpenCV libraries 
-              for OCR functionality.
-            </p>
-            
-            <hr className="text-editor-hr"/>
-            
-            <h1 className="project-title">Pokedex Dashboard</h1>
-            <p className="project-body">
-              Created a fully interactive pokemon dashboard to filter and lookup pokemon. This was 
-              used at my previous company as a skill assessment for new hires. The images of each 
-              pokemon were web scraped using a python script and the beautiful soup library.
+                soham-kolhe-portfolio.vercel.app
+              </a>
             </p>
 
           </div>

@@ -1,0 +1,102 @@
+.skills-window {
+  height: 100%;
+  overflow: auto;
+  padding-right: 2px; /* keep scrollbars clear */
+}
+
+.skills-title {
+  margin: 0 0 12px 0;
+  color: #000080;
+}
+
+.skill-category {
+  margin-bottom: 12px;
+}
+
+.skill-category .win95-fieldset {
+  /* Subtle glossy card while keeping Win95 vibe */
+  background: linear-gradient(180deg, #f7f7f7 0%, #efefef 100%);
+  border-radius: 2px;
+  border: 2px inset #c0c0c0;
+}
+
+.skill-category .win95-legend {
+  letter-spacing: 0.2px;
+}
+
+.skill-list {
+  list-style: none;
+  margin: 0;
+  padding: 6px 6px 2px 6px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 8px 12px;
+}
+
+.skill-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  background: #f4f4f4;
+  border: 1px inset #c0c0c0;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.06);
+  transition: background 120ms ease, transform 80ms ease;
+}
+
+.skill-check {
+  width: 16px;
+  text-align: center;
+  color: #008000;
+  filter: drop-shadow(0 0 1px rgba(0,0,0,0.25));
+}
+
+.skill-name {
+  font-weight: bold;
+  flex: 1;
+  color: #1a1a1a;
+}
+
+.skill-years {
+  font-size: 10px;
+  color: #13366e;
+  background: #e6f0ff;
+  border: 1px solid #b5c9ee;
+  border-radius: 999px;
+  padding: 2px 8px;
+  min-width: 64px;
+  text-align: center;
+}
+
+.skill-item:hover {
+  background: #eaeaea;
+}
+
+.skill-item:active {
+  transform: translateY(1px);
+}
+
+.learning-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 8px;
+}
+
+.tag {
+  background: #fff7e6;
+  border: 1px inset #c0c0c0;
+  padding: 3px 10px;
+  font-size: 11px;
+  color: #7a4a00;
+}
+
+/* Responsive improvements */
+@media (max-width: 768px) {
+  .skill-list {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+}
+
+

@@ -1,0 +1,13 @@
+.about-window {
+  height: 100%;
+  overflow: auto; /* allow vertical scroll within the window */
+  padding-right: 2px; /* prevent overlay of custom scrollbar */
+}
+
+/* Improve readability slightly without breaking theme */
+.about-window p {
+  line-height: 1.45;
+}
+
+
+

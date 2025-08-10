@@ -90,28 +90,18 @@ const Desktop = ({ onIconClick }) => {
     {
       id: 'github',
       name: 'GitHub',
-      icon: '/images/icons/github.gif', // Using the GitHub gif you provided
+        icon: '/images/icons/github.gif',
       iconType: 'image',
       position: iconPositions['github'] || { x: 150, y: 170 },
-      windowContent: {
-        title: 'GitHub Profile',
-        component: 'GitHubWindow',
-        width: 400,
-        height: 300,
-      }
+      windowContent: null
     },
     {
       id: 'linkedin',
       name: 'LinkedIn',
-      icon: '/images/icons/linkedin.png', // Using the LinkedIn PNG you provided
+      icon: '/images/icons/linkedin.png',
       iconType: 'image',
       position: iconPositions['linkedin'] || { x: 150, y: 290 },
-      windowContent: {
-        title: 'LinkedIn Profile',
-        component: 'LinkedInWindow',
-        width: 400,
-        height: 300,
-      }
+      windowContent: null
     },
     {
       id: 'games',
@@ -135,7 +125,17 @@ const Desktop = ({ onIconClick }) => {
           <DesktopIcon
             key={icon.id}
             icon={icon}
-            onClick={() => onIconClick(icon.windowContent)}
+            onClick={() => {
+              if (icon.id === 'github') {
+                window.open('https://github.com/soham74', '_blank');
+                return;
+              }
+              if (icon.id === 'linkedin') {
+                window.open('https://www.linkedin.com/in/soham-kolhe-88826b228/', '_blank');
+                return;
+              }
+              onIconClick(icon.windowContent);
+            }}
             onPositionChange={handlePositionChange}
           />
         ))}

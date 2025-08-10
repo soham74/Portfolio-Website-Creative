@@ -4,8 +4,6 @@ import ResumeWindow from './windows/ResumeWindow';
 import AboutWindow from './windows/AboutWindow';
 import ContactWindow from './windows/ContactWindow';
 import SkillsWindow from './windows/SkillsWindow';
-import GitHubWindow from './windows/GitHubWindow';
-import LinkedInWindow from './windows/LinkedInWindow';
 import GamesWindow from './windows/GamesWindow';
 
 const WindowContentRenderer = ({ component }) => {
@@ -20,10 +18,6 @@ const WindowContentRenderer = ({ component }) => {
       return <ContactWindow />;
     case 'SkillsWindow':
       return <SkillsWindow />;
-    case 'GitHubWindow':
-      return <GitHubWindow />;
-    case 'LinkedInWindow':
-      return <LinkedInWindow />;
     case 'GamesWindow':
       return <GamesWindow />;
     default:

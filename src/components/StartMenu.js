@@ -2,7 +2,7 @@ import React from 'react';
 import { List, ListItem, Separator } from './Win95Components';
 import './StartMenu.css';
 
-const StartMenu = ({ onClose, onItemClick }) => {
+const StartMenu = ({ onClose, onItemClick, onOpenWindow }) => {
   const handleItemClick = (action) => {
     onItemClick();
     if (action) {
@@ -10,44 +10,28 @@ const StartMenu = ({ onClose, onItemClick }) => {
     }
   };
 
+  const openWin = (component, title, width, height) => () =>
+    onOpenWindow &&
+    onOpenWindow({ component, title, width, height });
+
   const menuItems = [
-    {
-      label: 'About Me',
-      icon: '👤',
-      action: () => console.log('About Me clicked')
-    },
-    {
-      label: 'My Projects',
-      icon: '📁',
-      action: () => console.log('Projects clicked')
-    },
-    {
-      label: 'Resume',
-      icon: '📄',
-      action: () => console.log('Resume clicked')
-    },
+    { label: 'About Me', icon: '👤', action: openWin('AboutWindow', 'About Me', 500, 400) },
+    { label: 'My Projects', icon: '📁', action: openWin('ProjectsWindow', 'Projects', 600, 400) },
+    { label: 'Resume', icon: '📄', action: openWin('ResumeWindow', 'Resume', 500, 600) },
     { type: 'separator' },
-    {
-      label: 'Contact',
-      icon: '📧',
-      action: () => console.log('Contact clicked')
-    },
+    { label: 'Contact', icon: '📧', action: openWin('ContactWindow', 'Contact Information', 400, 300) },
     {
       label: 'GitHub',
       icon: '🔗',
-      action: () => window.open('https://github.com', '_blank')
+      action: () => window.open('https://github.com/soham74', '_blank')
     },
     {
       label: 'LinkedIn',
       icon: '💼',
-      action: () => window.open('https://linkedin.com', '_blank')
+      action: () => window.open('https://www.linkedin.com/in/soham-kolhe-88826b228/', '_blank')
     },
     { type: 'separator' },
-    {
-      label: 'Settings',
-      icon: '⚙️',
-      action: () => console.log('Settings clicked')
-    },
+    { label: 'Settings', icon: '⚙️', action: openWin('SkillsWindow', 'Technical Skills', 500, 400) },
     {
       label: 'Shutdown',
       icon: '⏻',

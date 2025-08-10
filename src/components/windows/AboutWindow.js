@@ -1,85 +1,100 @@
 import React from 'react';
 import { GroupBox } from '../Win95Components';
+import './AboutWindow.css';
 
 const AboutWindow = () => {
   return (
-    <div style={{ height: '100%', overflow: 'auto', textAlign: 'center' }}>
+    <div className="about-window" style={{ textAlign: 'center' }}>
       <h3 style={{ marginTop: 0, marginBottom: 16, color: '#000080' }}>
         👤 About Me
       </h3>
-      
-      <div style={{ 
-        display: 'flex', 
-        flexDirection: 'column', 
-        alignItems: 'center',
-        marginBottom: 20 
-      }}>
-        <div style={{
-          width: 80,
-          height: 80,
-          background: 'linear-gradient(45deg, #ff6b6b, #4ecdc4)',
-          borderRadius: '50%',
+
+      <div
+        style={{
           display: 'flex',
+          flexDirection: 'column',
           alignItems: 'center',
-          justifyContent: 'center',
-          fontSize: 32,
-          marginBottom: 12,
-          border: '2px inset #c0c0c0'
-        }}>
+          marginBottom: 20,
+        }}
+      >
+        <div
+          style={{
+            width: 80,
+            height: 80,
+            background: 'linear-gradient(45deg, #4ecdc4, #1e90ff)',
+            borderRadius: '50%',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            fontSize: 32,
+            marginBottom: 12,
+            border: '2px inset #c0c0c0',
+          }}
+        >
           👨‍💻
         </div>
-        <h2 style={{ margin: 0, color: '#000080' }}>John Doe</h2>
-        <p style={{ margin: '4px 0', fontStyle: 'italic' }}>Full Stack Developer</p>
+        <h2 style={{ margin: 0, color: '#000080' }}>Soham Kolhe</h2>
+        <p style={{ margin: '4px 0', fontStyle: 'italic' }}>
+          Undergraduate • Computer Science & Mathematics
+        </p>
       </div>
 
-      <GroupBox label="Personal Information" style={{ marginBottom: 16, textAlign: 'left' }}>
+      <GroupBox label="Details" style={{ marginBottom: 16, textAlign: 'left' }}>
         <div style={{ padding: 8 }}>
-          <p><strong>📍 Location:</strong> San Francisco, CA</p>
-          <p><strong>🎓 Education:</strong> B.S. Computer Science</p>
-          <p><strong>💼 Experience:</strong> 5+ years in web development</p>
-          <p><strong>🌐 Languages:</strong> English (Native), Spanish (Conversational)</p>
+          <p>
+            <strong>📍 Location:</strong> Madison, Wisconsin
+          </p>
+          <p>
+            <strong>🎓 Education:</strong> University of Wisconsin–Madison, BS in Computer
+            Science and Mathematics (Aug 2025 – May 2028) • GPA 4.0/4.0
+          </p>
+          <p>
+            <strong>🔗 Portfolio:</strong> soham-kolhe-portfolio.vercel.app
+          </p>
+          <p>
+            <strong>✉️ Contact:</strong> sohamkolhe@outlook.com • 425-444-6321
+          </p>
         </div>
       </GroupBox>
 
-      <GroupBox label="About" style={{ marginBottom: 16, textAlign: 'left' }}>
+      <GroupBox label="Summary" style={{ marginBottom: 16, textAlign: 'left' }}>
         <div style={{ padding: 8, lineHeight: 1.4 }}>
           <p>
-            Welcome to my retro portfolio! I'm a passionate full-stack developer with a love 
-            for creating innovative web applications. My journey in tech started with a 
-            fascination for how things work behind the scenes, and it has evolved into a 
-            career focused on building user-friendly, scalable solutions.
-          </p>
-          <p>
-            When I'm not coding, you can find me exploring new technologies, contributing to 
-            open-source projects, or enjoying the great outdoors. I believe in continuous 
-            learning and staying up-to-date with the latest industry trends.
+            I am an undergraduate focused on software systems, artificial
+            intelligence, and applied algorithms. I enjoy building tools that are
+            both intentional and practical—balancing performance, clarity, and
+            reliability. My experience spans teaching, product prototyping, and
+            independent research-style projects.
           </p>
         </div>
       </GroupBox>
 
-      <GroupBox label="Fun Facts" style={{ marginBottom: 16, textAlign: 'left' }}>
+      <GroupBox label="Highlights" style={{ marginBottom: 16, textAlign: 'left' }}>
         <div style={{ padding: 8 }}>
-          <p>🎮 Huge fan of retro games (hence this Windows 95 theme!)</p>
-          <p>☕ Coffee enthusiast - I can debug better with good coffee</p>
-          <p>🏔️ Love hiking and photography in my spare time</p>
-          <p>🎵 Play guitar and enjoy making music</p>
-          <p>📚 Always reading tech blogs and experimenting with new frameworks</p>
+          <ul style={{ margin: 0, paddingLeft: 16 }}>
+            <li>Instructor experience teaching Python, Java, Swift, and robotics</li>
+            <li>Full‑stack development with React, Next.js, and Firebase</li>
+            <li>Applied ML: sentiment analysis, search, and user modeling</li>
+            <li>Competitive security background (USCC 2nd, picoCTF Top 25)</li>
+          </ul>
         </div>
       </GroupBox>
 
-      <div style={{ 
-        marginTop: 20, 
-        padding: 12, 
-        background: '#f0f0f0', 
-        border: '1px inset #c0c0c0',
-        textAlign: 'center'
-      }}>
+      <div
+        style={{
+          marginTop: 20,
+          padding: 12,
+          background: '#f0f0f0',
+          border: '1px inset #c0c0c0',
+          textAlign: 'center',
+        }}
+      >
         <p style={{ margin: 0, fontSize: 10, color: '#666' }}>
-          🚀 Ready to work together? Let's build something amazing!
+          🚀 Always open to building ambitious, well-crafted systems.
         </p>
       </div>
     </div>
   );
 };
 
-export default AboutWindow; 
+export default AboutWindow;

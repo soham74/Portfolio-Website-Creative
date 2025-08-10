@@ -19,6 +19,17 @@ const App = () => {
     return () => clearInterval(timer);
   }, []);
 
+  // Listen for Start menu open requests
+  useEffect(() => {
+    const handler = (e) => {
+      if (e && e.detail) {
+        openWindow(e.detail);
+      }
+    };
+    window.addEventListener('openWindowFromStart', handler);
+    return () => window.removeEventListener('openWindowFromStart', handler);
+  }, [openWindows]);
+
   // Mouse event handlers
   const handleMouseDown = (e) => {
     soundManager.playMouseDown();

@@ -50,7 +50,7 @@ const DesktopIcon = ({ icon, onClick, onPositionChange }) => {
         // Constrain to viewport
         const iconElement = iconRef.current;
         if (iconElement) {
-          const rect = iconElement.getBoundingClientRect();
+          iconElement.getBoundingClientRect();
           const maxX = window.innerWidth - 80; // Icon width
           const maxY = window.innerHeight - 140; // Icon height + taskbar
           
