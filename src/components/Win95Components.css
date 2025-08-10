@@ -38,7 +38,7 @@
 
 /* Windows 95 Window */
 .win95-window {
-  background: #c0c0c0;
+  background: #ffffff;
   border: 2px outset #c0c0c0;
   font-family: 'MS Sans Serif', sans-serif;
   font-size: 11px;
@@ -57,7 +57,7 @@
 
 .win95-window-content {
   padding: 8px;
-  background: #c0c0c0;
+  background: #ffffff;
   overflow: auto;
 }
 
@@ -70,11 +70,11 @@
   border: 2px inset #c0c0c0;
   padding: 8px;
   margin: 0;
-  background: #c0c0c0;
+  background: #ffffff;
 }
 
 .win95-legend {
-  background: #c0c0c0;
+  background: #ffffff;
   padding: 0 4px;
   font-family: 'MS Sans Serif', sans-serif;
   font-size: 11px;

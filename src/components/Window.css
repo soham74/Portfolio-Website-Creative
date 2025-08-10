@@ -1,6 +1,6 @@
 .draggable-window {
   position: absolute;
-  background: #c0c0c0;
+  background: #ffffff;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   min-width: 300px;
   min-height: 200px;
@@ -67,7 +67,7 @@
   font-size: 11px !important;
   overflow: auto;
   height: calc(100% - 20px);
-  background: #c0c0c0;
+  background: #ffffff;
 }
 
 /* Mobile responsiveness */
@@ -119,12 +119,12 @@
 }
 
 .window-content::-webkit-scrollbar-track {
-  background: #c0c0c0;
+  background: #f4f4f5;
   border: 1px solid #808080;
 }
 
 .window-content::-webkit-scrollbar-thumb {
-  background: #c0c0c0;
+  background: #e5e7eb;
   border: 1px outset #c0c0c0;
 }
 
