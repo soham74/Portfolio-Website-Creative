@@ -59,14 +59,15 @@ const AboutWindow = () => {
           <div className="border border-neutral-200 bg-white p-3">
             <h4 className="m-0 mb-2 text-sm font-semibold text-neutral-800">Overview</h4>
             <p className="m-0 text-[13px] leading-relaxed text-neutral-800">
-              I build clean, reliable software across the stack—React frontends, APIs, databases, and cloud—plus
-              small, practical ML features when they help users. I value performance, clarity, and shipping work
-              that actually moves the needle.
+              Software engineer with hands‑on experience in full‑stack development, cloud systems, and applied AI
+              (computer vision and LLMs). I like owning features end‑to‑end—from shaping the UX to designing APIs,
+              integrating databases, and measuring real outcomes. I move quickly, keep code clear, and collaborate
+              well.
             </p>
             <ul className="list-disc pl-5 mt-2 text-[13px] text-neutral-800 space-y-1">
-              <li>Cut page load time by 45% and raised form success by 35% through focused refactors.</li>
-              <li>Structured teaching kits that boosted robotics project completion by ~30%.</li>
-              <li>Enjoy building minimal systems with thoughtful UX and solid engineering.</li>
+              <li>Reduced page load time by 45% and increased form success by 35% (Mustang Math).</li>
+              <li>Boosted robotics project completion by ~30% with structured templates and mentoring (iCode).</li>
+              <li>Built practical ML projects incl. an AI Chess Bot (Minimax + Alpha‑Beta) and a stock sentiment pipeline.</li>
             </ul>
           </div>
 
@@ -83,15 +84,19 @@ const AboutWindow = () => {
             ))}
           </div>
 
+          <div className="border border-neutral-200 bg-white p-3">
+            <h4 className="m-0 mb-2 text-sm font-semibold text-neutral-800">Focus areas</h4>
+            <div className="flex flex-wrap gap-2 text-[12px]">
+              {['Full‑Stack','API & DB Design','Cloud','Computer Vision','LLMs','Performance'].map(tag => (
+                <span key={tag} className="px-2 py-1 rounded border border-neutral-200 bg-neutral-50 text-neutral-700">{tag}</span>
+              ))}
+            </div>
+          </div>
+
           <div className="p-3 bg-neutral-50 border border-neutral-200 text-center">
             <p className="m-0 text-[11px] text-neutral-600">🚀 Always open to building ambitious, well‑crafted systems.</p>
           </div>
         </div>
-      </div>
-
-      {/* Footer note */}
-      <div className="mt-5 p-3 bg-neutral-50 border border-neutral-200 text-center">
-        <p className="m-0 text-[10px] text-neutral-600">🚀 Always open to building ambitious, well‑crafted systems.</p>
       </div>
     </div>
   );
