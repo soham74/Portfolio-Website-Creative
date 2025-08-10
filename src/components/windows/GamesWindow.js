@@ -1,22 +1,14 @@
 import React, { useState } from 'react';
-import ClickSpeedGame from './games/ClickSpeedGame';
-import NumberGuessGame from './games/NumberGuessGame';
-import MemoryPatternGame from './games/MemoryPatternGame';
+import SnakeGame from './games/SnakeGame';
 
 const GAMES = [
-  { id: 'click', name: 'Click Speed', description: 'How many clicks in 10s?', component: 'ClickSpeedGame' },
-  { id: 'guess', name: 'Number Guess', description: 'Guess a number 1–100', component: 'NumberGuessGame' },
-  { id: 'memory', name: 'Memory Pattern', description: 'Repeat the sequence', component: 'MemoryPatternGame' },
+  { id: 'snake', name: 'Snake', description: 'Classic snake with smooth controls', component: 'SnakeGame' },
 ];
 
 const renderGame = (component) => {
   switch (component) {
-    case 'ClickSpeedGame':
-      return <ClickSpeedGame />;
-    case 'NumberGuessGame':
-      return <NumberGuessGame />;
-    case 'MemoryPatternGame':
-      return <MemoryPatternGame />;
+    case 'SnakeGame':
+      return <SnakeGame />;
     default:
       return <div style={{ color: '#666', fontSize: 12, padding: 12 }}>Select a game on the left.</div>;
   }
