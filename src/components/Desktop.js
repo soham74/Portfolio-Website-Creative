@@ -57,8 +57,8 @@ const Desktop = ({ onIconClick }) => {
       windowContent: {
         title: 'About Me',
         component: 'AboutWindow',
-        width: 760,
-        height: 560,
+        width: 700,
+        height: 520,
       }
     },
     {
