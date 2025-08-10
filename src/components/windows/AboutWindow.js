@@ -94,7 +94,7 @@ const AboutWindow = () => {
           </div>
 
           <div className="p-3 bg-neutral-50 border border-neutral-200 text-center">
-            <p className="m-0 text-[11px] text-neutral-600">🚀 Always open to building ambitious, well‑crafted systems.</p>
+            <p className="m-0 text-[11px] text-neutral-600">Always open to building ambitious, well‑crafted systems.</p>
           </div>
         </div>
       </div>

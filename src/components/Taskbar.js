@@ -93,16 +93,14 @@ const Taskbar = ({ openWindows, currentTime, onWindowClick, onStartClick }) => {
 
           <div className="taskbar-windows">
             {openWindows.map(window => (
-              !window.isMinimized && (
-                <Button
-                  key={window.id}
-                  className="taskbar-window-button"
-                  onClick={() => handleWindowClick(window.id)}
-                  active={false}
-                >
-                  {window.title}
-                </Button>
-              )
+              <Button
+                key={window.id}
+                className="taskbar-window-button"
+                onClick={() => handleWindowClick(window.id)}
+                active={false}
+              >
+                {window.title}
+              </Button>
             ))}
           </div>
         </div>
