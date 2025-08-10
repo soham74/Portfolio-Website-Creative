@@ -1,4 +1,4 @@
-// Tailwind CSS configuration
+// Tailwind CSS configuration (v3)
 module.exports = {
   content: [
     './public/index.html',

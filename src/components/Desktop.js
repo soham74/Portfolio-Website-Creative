@@ -31,8 +31,8 @@ const Desktop = ({ onIconClick }) => {
       windowContent: {
         title: 'Projects',
         component: 'ProjectsWindow',
-        width: 600,
-        height: 400,
+        width: 760,
+        height: 520,
       }
     },
     {
@@ -44,8 +44,8 @@ const Desktop = ({ onIconClick }) => {
       windowContent: {
         title: 'Resume',
         component: 'ResumeWindow',
-        width: 500,
-        height: 600,
+        width: 720,
+        height: 620,
       }
     },
     {
@@ -57,8 +57,8 @@ const Desktop = ({ onIconClick }) => {
       windowContent: {
         title: 'About Me',
         component: 'AboutWindow',
-        width: 500,
-        height: 400,
+        width: 760,
+        height: 560,
       }
     },
     {
@@ -70,8 +70,8 @@ const Desktop = ({ onIconClick }) => {
       windowContent: {
         title: 'Contact Information',
         component: 'ContactWindow',
-        width: 400,
-        height: 300,
+        width: 520,
+        height: 360,
       }
     },
     {
@@ -83,8 +83,8 @@ const Desktop = ({ onIconClick }) => {
       windowContent: {
         title: 'Technical Skills',
         component: 'SkillsWindow',
-        width: 500,
-        height: 400,
+        width: 760,
+        height: 520,
       }
     },
     {
@@ -112,8 +112,8 @@ const Desktop = ({ onIconClick }) => {
       windowContent: {
         title: 'Mini Games',
         component: 'GamesWindow',
-        width: 500,
-        height: 400,
+        width: 720,
+        height: 520,
       }
     }
   ];
