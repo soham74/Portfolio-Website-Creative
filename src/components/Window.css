@@ -6,6 +6,9 @@
   min-height: 200px;
   max-width: 90vw;
   max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 
 .draggable-window.active {
@@ -66,8 +69,10 @@
   font-family: 'MS Sans Serif', sans-serif !important;
   font-size: 11px !important;
   overflow: auto;
-  height: calc(100% - 20px);
   background: #ffffff;
+  /* allow flex child to scroll */
+  flex: 1 1 auto;
+  min-height: 0;
 }
 
 /* Mobile responsiveness */
