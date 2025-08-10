@@ -5,21 +5,17 @@ const GAMES = [
   { id: 'snake', name: 'Snake', description: 'Classic snake with smooth controls', component: 'SnakeGame' },
 ];
 
-const renderGame = (component) => {
-  switch (component) {
-    case 'SnakeGame':
-      return <SnakeGame />;
-    default:
-      return <div style={{ color: '#666', fontSize: 12, padding: 12 }}>Select a game on the left.</div>;
-  }
-};
+const renderGame = () => null;
 
 const GamesWindow = () => {
   const [selected, setSelected] = useState(null);
-  const [opened, setOpened] = useState(null);
 
   const handleOpen = () => {
-    if (selected) setOpened(selected);
+    if (!selected) return;
+    const event = new CustomEvent('openWindowFromStart', {
+      detail: { component: 'SnakeGame', title: 'Snake', width: 720, height: 560 },
+    });
+    window.dispatchEvent(event);
   };
 
   return (
@@ -49,14 +45,17 @@ const GamesWindow = () => {
         </div>
       </div>
 
-      {/* Right pane: details / preview */}
-      <div style={{ overflow: 'hidden' }}>
-        {opened ? (
-          <div style={{ height: '100%' }}>{renderGame(opened.component)}</div>
-        ) : (
-          <div style={{ padding: 12 }}>
-            <div style={{ fontSize: 12, color: '#6b7280' }}>Select a game to preview. Double‑click to open.</div>
+      {/* Right pane: details */}
+      <div style={{ overflow: 'auto', padding: 12 }}>
+        {selected ? (
+          <div>
+            <div style={{ fontSize: 16, fontWeight: 700, marginBottom: 6 }}>{selected.name}</div>
+            <div style={{ fontSize: 12, color: '#6b7280', marginBottom: 12 }}>{selected.description}</div>
+            <button onClick={handleOpen} style={{ padding: '8px 12px', fontSize: 12, cursor: 'pointer' }}>Open</button>
+            <div style={{ fontSize: 11, color: '#9ca3af', marginTop: 8 }}>Double‑click the game in the list to open in a new window.</div>
           </div>
+        ) : (
+          <div style={{ fontSize: 12, color: '#6b7280' }}>Select a game on the left.</div>
         )}
       </div>
     </div>

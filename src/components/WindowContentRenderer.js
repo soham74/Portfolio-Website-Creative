@@ -5,6 +5,7 @@ import AboutWindow from './windows/AboutWindow';
 import ContactWindow from './windows/ContactWindow';
 import SkillsWindow from './windows/SkillsWindow';
 import GamesWindow from './windows/GamesWindow';
+import SnakeGame from './windows/games/SnakeGame';
 
 const WindowContentRenderer = ({ component }) => {
   switch (component) {
@@ -20,6 +21,8 @@ const WindowContentRenderer = ({ component }) => {
       return <SkillsWindow />;
     case 'GamesWindow':
       return <GamesWindow />;
+    case 'SnakeGame':
+      return <SnakeGame />;
     default:
       return (
         <div>
