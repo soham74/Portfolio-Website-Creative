@@ -65,6 +65,26 @@
     white-space: pre-wrap;
 }
 
+.project-subtitle {
+    margin-left: 9px;
+    margin-top: -8px;
+    margin-bottom: 12px;
+    font-size: 0.85rem;
+    color: #444;
+    font-style: italic;
+    font-family: var(--primary-font);
+}
+
+.project-list {
+    margin-left: 24px;
+    padding-left: 12px;
+    list-style-type: disc;
+}
+
+.project-list li {
+    margin-bottom: 6px;
+}
+
 .project-link {
     color: #0000ff;
     text-decoration: underline;

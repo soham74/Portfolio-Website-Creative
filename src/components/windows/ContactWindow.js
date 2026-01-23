@@ -28,11 +28,9 @@ const ContactWindow = () => {
   };
 
   const contactInfo = [
-    { label: 'Email', value: 'john.doe@email.com', icon: '📧', link: 'mailto:john.doe@email.com' },
-    { label: 'LinkedIn', value: '/in/johndoe', icon: '💼', link: 'https://linkedin.com/in/johndoe' },
-    { label: 'GitHub', value: '@johndoe', icon: '🔗', link: 'https://github.com/johndoe' },
-    { label: 'Twitter', value: '@johndoe_dev', icon: '🐦', link: 'https://twitter.com/johndoe_dev' },
-    { label: 'Phone', value: '+1 (555) 123-4567', icon: '📱', link: 'tel:+15551234567' }
+    { label: 'Email', value: 'sohamkolhe26@gmail.com', link: 'mailto:sohamkolhe26@gmail.com' },
+    { label: 'LinkedIn', value: '/in/soham-kolhe', link: 'https://www.linkedin.com/in/soham-kolhe/' },
+    { label: 'GitHub', value: '@soham74', link: 'https://github.com/soham74' }
   ];
 
   const handleContactClick = (link) => {
@@ -42,7 +40,7 @@ const ContactWindow = () => {
   return (
     <div style={{ height: '100%', overflow: 'auto' }}>
       <h3 style={{ marginTop: 0, marginBottom: 16, color: '#000080' }}>
-        📧 Contact Information
+        Contact Information
       </h3>
       
       <GroupBox label="Get In Touch" style={{ marginBottom: 16 }}>
@@ -74,9 +72,6 @@ const ContactWindow = () => {
                 e.target.style.border = '1px solid transparent';
               }}
             >
-              <span style={{ fontSize: 16, marginRight: 8, width: 20 }}>
-                {contact.icon}
-              </span>
               <span style={{ fontWeight: 'bold', minWidth: 60, marginRight: 8 }}>
                 {contact.label}:
               </span>
@@ -98,7 +93,7 @@ const ContactWindow = () => {
               border: '1px inset #c0c0c0'
             }}>
               <p style={{ margin: 0, color: '#008000', fontWeight: 'bold' }}>
-                ✅ Message sent successfully!
+                Message sent successfully!
               </p>
               <p style={{ margin: '8px 0 0 0', fontSize: 10, color: '#666' }}>
                 Thank you for reaching out. I'll get back to you soon!
@@ -155,7 +150,7 @@ const ContactWindow = () => {
               </div>
               
               <Button type="submit" style={{ width: '100%' }}>
-                📤 Send Message
+                Send Message
               </Button>
             </form>
           )}
@@ -170,7 +165,7 @@ const ContactWindow = () => {
         textAlign: 'center'
       }}>
         <p style={{ margin: 0, fontSize: 10, color: '#666' }}>
-          🕐 I typically respond within 24 hours during business days
+          I typically respond within 24 hours during business days
         </p>
       </div>
     </div>
