@@ -28,6 +28,7 @@ const App = () => {
     };
     window.addEventListener('openWindowFromStart', handler);
     return () => window.removeEventListener('openWindowFromStart', handler);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [openWindows]);
 
   // Mouse event handlers

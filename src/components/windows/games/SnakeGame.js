@@ -74,6 +74,7 @@ const SnakeGame = () => {
     };
     window.addEventListener('keydown', handleKey);
     return () => window.removeEventListener('keydown', handleKey);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useInterval(() => {
@@ -186,6 +187,7 @@ const SnakeGame = () => {
     ctx.beginPath(); ctx.arc(cx + ex + 4, cy + ey + 4, 2.5, 0, Math.PI * 2); ctx.fill();
   }
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => { if (ctx) render(false); }, [ctx]);
 
   return (

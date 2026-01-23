@@ -1,11 +1,8 @@
 import React, { useState } from 'react';
-import SnakeGame from './games/SnakeGame';
 
 const GAMES = [
   { id: 'snake', name: 'Snake', description: 'Classic snake with smooth controls', component: 'SnakeGame' },
 ];
-
-const renderGame = () => null;
 
 const GamesWindow = () => {
   const [selected, setSelected] = useState(null);
