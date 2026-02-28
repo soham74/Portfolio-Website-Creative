@@ -17,7 +17,11 @@ const StartMenu = ({ onClose, onItemClick, onOpenWindow }) => {
   const menuItems = [
     { label: 'About Me', icon: '👤', action: openWin('AboutWindow', 'About Me', 500, 400) },
     { label: 'My Projects', icon: '📁', action: openWin('ProjectsWindow', 'Projects', 600, 400) },
-    { label: 'Resume', icon: '📄', action: openWin('ResumeWindow', 'Resume', 500, 600) },
+    { label: 'Terminal', icon: '>', action: openWin('ResumeWindow', 'Terminal', 680, 480) },
+    { label: 'My Computer', icon: '💻', action: openWin('ExplorerWindow', 'My Computer', 700, 480) },
+    { type: 'separator' },
+    { label: 'Notepad', icon: '📝', action: openWin('NotepadWindow', 'Notepad', 600, 450) },
+    { label: 'Music Player', icon: '🎵', action: openWin('MusicPlayerWindow', 'Winamp', 380, 480) },
     { type: 'separator' },
     { label: 'Contact', icon: '📧', action: openWin('ContactWindow', 'Contact Information', 400, 300) },
     {
@@ -31,7 +35,14 @@ const StartMenu = ({ onClose, onItemClick, onOpenWindow }) => {
       action: () => window.open('https://www.linkedin.com/in/soham-kolhe-88826b228/', '_blank')
     },
     { type: 'separator' },
-    { label: 'Settings', icon: '⚙️', action: openWin('SkillsWindow', 'Technical Skills', 500, 400) },
+    { label: 'Settings', icon: '⚙️', action: openWin('SettingsWindow', 'Display Properties', 420, 460) },
+    {
+      label: 'Run Setup Again',
+      icon: '📦',
+      action: () => {
+        window.dispatchEvent(new Event('runSetupAgain'));
+      }
+    },
     {
       label: 'Shutdown',
       icon: '⏻',
@@ -53,7 +64,7 @@ const StartMenu = ({ onClose, onItemClick, onOpenWindow }) => {
             <span className="user-name">Portfolio</span>
           </div>
         </div>
-        
+
         <div className="start-menu-content">
           <List>
             {menuItems.map((item, index) => (
@@ -77,4 +88,4 @@ const StartMenu = ({ onClose, onItemClick, onOpenWindow }) => {
   );
 };
 
-export default StartMenu; 
+export default StartMenu;

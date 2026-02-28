@@ -1,0 +1,99 @@
+.notepad-window {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: #fff;
+  font-family: 'Courier New', Consolas, monospace;
+}
+
+.notepad-menubar {
+  display: flex;
+  background: #c0c0c0;
+  border-bottom: 1px solid #808080;
+  padding: 2px 0;
+  font-family: 'MS Sans Serif', 'Segoe UI', Tahoma, sans-serif;
+  font-size: 12px;
+  flex-shrink: 0;
+}
+
+.notepad-menu-item {
+  position: relative;
+  padding: 2px 8px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.notepad-menu-item:hover {
+  background: #000080;
+  color: #fff;
+}
+
+.notepad-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #c0c0c0;
+  border: 2px outset #dfdfdf;
+  min-width: 180px;
+  z-index: 100;
+  padding: 2px;
+}
+
+.notepad-dropdown-item {
+  padding: 4px 20px;
+  cursor: pointer;
+  white-space: nowrap;
+  font-size: 12px;
+}
+
+.notepad-dropdown-item:hover {
+  background: #000080;
+  color: #fff;
+}
+
+.notepad-dropdown-separator {
+  height: 1px;
+  background: #808080;
+  margin: 2px 4px;
+  border-bottom: 1px solid #fff;
+}
+
+.notepad-content {
+  flex: 1;
+  padding: 8px 12px;
+  overflow-y: auto;
+  font-size: 13px;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  color: #000;
+  background: #fff;
+  cursor: text;
+  outline: none;
+  border: 2px inset #c0c0c0;
+  margin: 0;
+}
+
+.notepad-statusbar {
+  display: flex;
+  justify-content: space-between;
+  background: #c0c0c0;
+  border-top: 1px solid #808080;
+  padding: 2px 8px;
+  font-family: 'MS Sans Serif', 'Segoe UI', Tahoma, sans-serif;
+  font-size: 11px;
+  color: #000;
+  flex-shrink: 0;
+}
+
+.notepad-statusbar-section {
+  border: 1px inset #c0c0c0;
+  padding: 1px 8px;
+}
+
+@media (max-width: 768px) {
+  .notepad-content {
+    font-size: 12px;
+    padding: 6px 8px;
+  }
+}

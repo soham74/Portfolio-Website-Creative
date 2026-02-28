@@ -1,16 +1,17 @@
 import React, { useState } from 'react';
 import { Button } from './Win95Components';
 import StartMenu from './StartMenu';
+import VisitorCounter from './VisitorCounter';
 import './Taskbar.css';
 
 const Taskbar = ({ openWindows, currentTime, onWindowClick, onStartClick }) => {
   const [showStartMenu, setShowStartMenu] = useState(false);
 
   const formatTime = (date) => {
-    return date.toLocaleTimeString([], { 
-      hour: '2-digit', 
+    return date.toLocaleTimeString([], {
+      hour: '2-digit',
       minute: '2-digit',
-      hour12: true 
+      hour12: true
     });
   };
 
@@ -30,13 +31,11 @@ const Taskbar = ({ openWindows, currentTime, onWindowClick, onStartClick }) => {
   return (
     <>
         {showStartMenu && (
-          <StartMenu 
-            onClose={() => setShowStartMenu(false)} 
+          <StartMenu
+            onClose={() => setShowStartMenu(false)}
             onItemClick={() => setShowStartMenu(false)}
             onOpenWindow={(windowData) => {
               setShowStartMenu(false);
-              // Delegate to parent via window click list? not available here.
-              // Emit a custom event that App listens to.
               const event = new CustomEvent('openWindowFromStart', { detail: windowData });
               window.dispatchEvent(event);
             }}
@@ -49,9 +48,9 @@ const Taskbar = ({ openWindows, currentTime, onWindowClick, onStartClick }) => {
             onClick={handleStartClick}
             active={showStartMenu}
           >
-            <img 
-              src="/images/icons/windows_icon.png" 
-              alt="Windows" 
+            <img
+              src="/images/icons/windows_icon.png"
+              alt="Windows"
               className="start-icon-image"
               onError={(e) => {
                 e.target.style.display = 'none';
@@ -61,29 +60,28 @@ const Taskbar = ({ openWindows, currentTime, onWindowClick, onStartClick }) => {
             <span className="start-icon-fallback" style={{ display: 'none' }}>🪟</span>
             <span className="start-text">Start</span>
           </Button>
-          
+
           <div className="taskbar-separator" />
-          {/* External links moved to the left */}
           <div className="taskbar-links">
-            <button 
+            <button
               className="taskbar-link-button"
               onClick={() => handleExternalLink('https://www.linkedin.com/in/soham-kolhe-88826b228/')}
               title="LinkedIn Profile"
             >
-              <img 
-                src="/images/icons/linkedin.png" 
-                alt="LinkedIn" 
+              <img
+                src="/images/icons/linkedin.png"
+                alt="LinkedIn"
                 className="taskbar-link-icon"
               />
             </button>
-            <button 
+            <button
               className="taskbar-link-button"
               onClick={() => handleExternalLink('https://github.com/soham74')}
               title="GitHub Profile"
             >
-              <img 
-                src="/images/icons/github.gif" 
-                alt="GitHub" 
+              <img
+                src="/images/icons/github.gif"
+                alt="GitHub"
                 className="taskbar-link-icon"
               />
             </button>
@@ -104,9 +102,10 @@ const Taskbar = ({ openWindows, currentTime, onWindowClick, onStartClick }) => {
             ))}
           </div>
         </div>
-        
+
         <div className="taskbar-right">
           <div className="system-tray">
+            <VisitorCounter />
             <div className="clock">
               {formatTime(currentTime)}
             </div>
@@ -117,4 +116,4 @@ const Taskbar = ({ openWindows, currentTime, onWindowClick, onStartClick }) => {
   );
 };
 
-export default Taskbar; 
+export default Taskbar;

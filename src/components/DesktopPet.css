@@ -1,0 +1,172 @@
+/* ── Desktop Pet Container ── */
+.desktop-pet {
+  position: fixed;
+  bottom: 44px;
+  z-index: 998;
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: none;
+}
+
+/* ── Cat Emoji ── */
+.desktop-pet__cat {
+  font-size: 24px;
+  display: inline-block;
+  transition: transform 0.1s linear;
+}
+
+/* ── Walk Bob ── */
+.desktop-pet--walk .desktop-pet__cat {
+  animation: pet-walk-bob 0.35s ease-in-out infinite;
+}
+
+@keyframes pet-walk-bob {
+  0%, 100% {
+    transform: translateY(0) var(--face-dir, scaleX(1));
+  }
+  50% {
+    transform: translateY(-4px) var(--face-dir, scaleX(1));
+  }
+}
+
+/* Override the inline scaleX with the animation — we apply facing via style prop,
+   so the bob only affects Y. Re-compose facing in the keyframes isn't needed
+   because the inline style on the span already handles horizontal flip. */
+.desktop-pet--walk .desktop-pet__cat {
+  animation: pet-walk-bob-y 0.35s ease-in-out infinite;
+}
+
+@keyframes pet-walk-bob-y {
+  0%, 100% {
+    translate: 0 0;
+  }
+  50% {
+    translate: 0 -4px;
+  }
+}
+
+/* ── Idle ── */
+.desktop-pet--idle .desktop-pet__cat {
+  animation: none;
+}
+
+/* ── Sleep ── */
+.desktop-pet--sleep .desktop-pet__cat {
+  animation: pet-sleep-pulse 2s ease-in-out infinite;
+}
+
+@keyframes pet-sleep-pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.08);
+    opacity: 0.75;
+  }
+}
+
+/* ── Zzz Indicator ── */
+.desktop-pet__zzz {
+  position: absolute;
+  top: -22px;
+  right: -6px;
+  font-size: 14px;
+  animation: pet-zzz-float 1.5s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes pet-zzz-float {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-6px) scale(1.15);
+    opacity: 0.6;
+  }
+}
+
+/* ── React to Click (Jump) ── */
+.desktop-pet--react-to-click .desktop-pet__cat {
+  animation: pet-jump 0.4s ease-out;
+}
+
+@keyframes pet-jump {
+  0% {
+    translate: 0 0;
+  }
+  30% {
+    translate: 0 -16px;
+  }
+  50% {
+    translate: 0 -18px;
+  }
+  100% {
+    translate: 0 0;
+  }
+}
+
+/* ── Speech Bubble ── */
+.desktop-pet__speech {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 6px;
+  background: #c0c0c0;
+  color: #000;
+  font-family: 'MS Sans Serif', 'Microsoft Sans Serif', Tahoma, Geneva, sans-serif;
+  font-size: 11px;
+  line-height: 1.3;
+  padding: 4px 8px;
+  white-space: nowrap;
+  border: 2px solid;
+  border-color: #ffffff #808080 #808080 #ffffff;
+  box-shadow: 1px 1px 0 #000;
+  pointer-events: none;
+  animation: pet-speech-in 0.15s ease-out;
+  z-index: 999;
+}
+
+/* Win95-style pointer / notch at bottom of bubble */
+.desktop-pet__speech::after {
+  content: '';
+  position: absolute;
+  bottom: -7px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 7px solid #c0c0c0;
+}
+
+/* Outer border for the pointer to match Win95 shadow */
+.desktop-pet__speech::before {
+  content: '';
+  position: absolute;
+  bottom: -9px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-top: 9px solid #808080;
+}
+
+@keyframes pet-speech-in {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(4px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}

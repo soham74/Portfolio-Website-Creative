@@ -2,6 +2,11 @@ import React, { useState, useEffect } from 'react';
 import Desktop from './components/Desktop';
 import Taskbar from './components/Taskbar';
 import WindowManager from './components/WindowManager';
+import Clippy from './components/Clippy';
+import DesktopPet from './components/DesktopPet';
+import BSOD from './components/BSOD';
+import EasterEggs from './components/EasterEggs';
+import InstallWizard from './components/InstallWizard';
 import soundManager from './utils/SoundManager';
 import windowsBg from './assets/windows_bg.jpeg';
 import './App.css';
@@ -10,6 +15,14 @@ const App = () => {
   const [openWindows, setOpenWindows] = useState([]);
   const [activeWindow, setActiveWindow] = useState(null);
   const [currentTime, setCurrentTime] = useState(new Date());
+  const [wallpaper, setWallpaper] = useState({ type: 'image', value: windowsBg });
+
+  // Initialize global recycle bin
+  useEffect(() => {
+    if (!window.__recycleBin) {
+      window.__recycleBin = [];
+    }
+  }, []);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -30,6 +43,25 @@ const App = () => {
     return () => window.removeEventListener('openWindowFromStart', handler);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [openWindows]);
+
+  // Listen for wallpaper change from Settings
+  useEffect(() => {
+    const handler = (e) => {
+      const wp = e.detail;
+      if (!wp) return;
+      if (wp.value === 'none' || wp.value?.startsWith('solid-')) {
+        setWallpaper({ type: 'color', value: wp.color || '#008080' });
+      } else if (wp.value === 'clouds') {
+        setWallpaper({ type: 'gradient', value: 'linear-gradient(180deg, #87CEEB 0%, #E0F0FF 60%, #fff 100%)' });
+      } else if (wp.value?.startsWith('/')) {
+        setWallpaper({ type: 'image', value: wp.value });
+      } else {
+        setWallpaper({ type: 'image', value: windowsBg });
+      }
+    };
+    window.addEventListener('changeWallpaper', handler);
+    return () => window.removeEventListener('changeWallpaper', handler);
+  }, []);
 
   // Mouse event handlers
   const handleMouseDown = (e) => {
@@ -53,6 +85,21 @@ const App = () => {
   };
 
   const closeWindow = (windowId) => {
+    // Save closed window to recycle bin
+    const closedWindow = openWindows.find(w => w.id === windowId);
+    if (closedWindow && closedWindow.component !== 'RecycleBinWindow') {
+      if (!window.__recycleBin) window.__recycleBin = [];
+      window.__recycleBin.push({
+        id: closedWindow.id,
+        title: closedWindow.title,
+        component: closedWindow.component,
+        width: closedWindow.width,
+        height: closedWindow.height,
+        closedAt: Date.now(),
+      });
+      window.dispatchEvent(new Event('recycleBinUpdated'));
+    }
+
     setOpenWindows(openWindows.filter(window => window.id !== windowId));
     if (activeWindow === windowId) {
       const remainingWindows = openWindows.filter(window => window.id !== windowId);
@@ -61,8 +108,8 @@ const App = () => {
   };
 
   const minimizeWindow = (windowId) => {
-    setOpenWindows(openWindows.map(window => 
-      window.id === windowId 
+    setOpenWindows(openWindows.map(window =>
+      window.id === windowId
         ? { ...window, isMinimized: !window.isMinimized }
         : window
     ));
@@ -70,39 +117,50 @@ const App = () => {
 
   const focusWindow = (windowId) => {
     setActiveWindow(windowId);
-    setOpenWindows(openWindows.map(window => 
-      window.id === windowId 
+    setOpenWindows(openWindows.map(window =>
+      window.id === windowId
         ? { ...window, isMinimized: false, zIndex: Math.max(...openWindows.map(w => w.zIndex || 0)) + 1 }
         : window
     ));
   };
 
+  const bgStyle = wallpaper.type === 'color'
+    ? { backgroundColor: wallpaper.value }
+    : wallpaper.type === 'gradient'
+      ? { backgroundImage: wallpaper.value }
+      : {
+          backgroundImage: `url(${wallpaper.value})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center center',
+          backgroundRepeat: 'no-repeat',
+        };
+
   return (
-    <div 
+    <div
       className="app"
-      style={{
-        backgroundImage: `url(${windowsBg})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center center',
-        backgroundRepeat: 'no-repeat'
-      }}
+      style={bgStyle}
       onMouseDown={handleMouseDown}
       onMouseUp={handleMouseUp}
     >
       <Desktop onIconClick={openWindow} />
-      <WindowManager 
+      <WindowManager
         windows={openWindows}
         activeWindow={activeWindow}
         onClose={closeWindow}
         onMinimize={minimizeWindow}
         onFocus={focusWindow}
       />
-      <Taskbar 
+      <Taskbar
         openWindows={openWindows}
         currentTime={currentTime}
         onWindowClick={focusWindow}
-        onStartClick={() => console.log('Start menu clicked')}
+        onStartClick={() => {}}
       />
+      <Clippy />
+      <DesktopPet />
+      <BSOD />
+      <EasterEggs />
+      <InstallWizard />
     </div>
   );
 };

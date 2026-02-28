@@ -1,18 +1,11 @@
 import React, { useState } from 'react';
 import DesktopIcon from './DesktopIcon';
+import DesktopContextMenu from './DesktopContextMenu';
 import './Desktop.css';
-
-// Import your custom images
-// import projectsIcon from '../assets/images/icons/projects.png';
-// import resumeIcon from '../assets/images/icons/resume.png';
-// import aboutIcon from '../assets/images/icons/about.png';
-// import contactIcon from '../assets/images/icons/contact.png';
-// import skillsIcon from '../assets/images/icons/skills.png';
-// import sonicIcon from '../assets/images/icons/sonic.png';
-// import gamesIcon from '../assets/images/icons/games.png';
 
 const Desktop = ({ onIconClick }) => {
   const [iconPositions, setIconPositions] = useState({});
+  const [contextMenu, setContextMenu] = useState(null);
 
   const handlePositionChange = (iconId, newPosition) => {
     setIconPositions(prev => ({
@@ -21,13 +14,33 @@ const Desktop = ({ onIconClick }) => {
     }));
   };
 
+  const handleContextMenu = (e) => {
+    // Only show on desktop background, not on icons
+    if (e.target.closest('.desktop-icon')) return;
+    e.preventDefault();
+    setContextMenu({ x: e.clientX, y: e.clientY });
+  };
+
   const desktopIcons = [
+    {
+      id: 'mycomputer',
+      name: 'My Computer',
+      icon: '/images/icons/filled_folder.png',
+      iconType: 'image',
+      position: iconPositions['mycomputer'] || { x: 50, y: 50 },
+      windowContent: {
+        title: 'My Computer',
+        component: 'ExplorerWindow',
+        width: 700,
+        height: 480,
+      }
+    },
     {
       id: 'projects',
       name: 'Projects',
-      icon: '/images/icons/filled_folder.png', // Changed to filled folder
+      icon: '/images/icons/filled_folder.png',
       iconType: 'image',
-      position: iconPositions['projects'] || { x: 50, y: 50 },
+      position: iconPositions['projects'] || { x: 50, y: 170 },
       windowContent: {
         title: 'Projects',
         component: 'ProjectsWindow',
@@ -37,12 +50,12 @@ const Desktop = ({ onIconClick }) => {
     },
     {
       id: 'resume',
-      name: 'Resume.pdf',
-      icon: '/images/icons/windows_icon.png', // Using Windows icon for document
+      name: 'Terminal',
+      icon: '/images/icons/windows_icon.png',
       iconType: 'image',
-      position: iconPositions['resume'] || { x: 50, y: 170 },
+      position: iconPositions['resume'] || { x: 50, y: 290 },
       windowContent: {
-        title: 'Resume',
+        title: 'Terminal',
         component: 'ResumeWindow',
         width: 720,
         height: 620,
@@ -51,9 +64,9 @@ const Desktop = ({ onIconClick }) => {
     {
       id: 'about',
       name: 'About Me',
-      icon: '/images/icons/filled_folder.png', // Using filled folder for About Me
+      icon: '/images/icons/filled_folder.png',
       iconType: 'image',
-      position: iconPositions['about'] || { x: 50, y: 290 },
+      position: iconPositions['about'] || { x: 50, y: 410 },
       windowContent: {
         title: 'About Me',
         component: 'AboutWindow',
@@ -64,9 +77,9 @@ const Desktop = ({ onIconClick }) => {
     {
       id: 'contact',
       name: 'Contact',
-      icon: '/images/icons/windows_icon.png', // Using Windows icon for Contact
+      icon: '/images/icons/windows_icon.png',
       iconType: 'image',
-      position: iconPositions['contact'] || { x: 50, y: 410 },
+      position: iconPositions['contact'] || { x: 150, y: 50 },
       windowContent: {
         title: 'Contact Information',
         component: 'ContactWindow',
@@ -77,9 +90,9 @@ const Desktop = ({ onIconClick }) => {
     {
       id: 'skills',
       name: 'Skills',
-      icon: '/images/icons/filled_folder.png', // Changed to filled folder
+      icon: '/images/icons/filled_folder.png',
       iconType: 'image',
-      position: iconPositions['skills'] || { x: 150, y: 50 },
+      position: iconPositions['skills'] || { x: 150, y: 170 },
       windowContent: {
         title: 'Technical Skills',
         component: 'SkillsWindow',
@@ -90,9 +103,9 @@ const Desktop = ({ onIconClick }) => {
     {
       id: 'github',
       name: 'GitHub',
-        icon: '/images/icons/github.gif',
+      icon: '/images/icons/github.gif',
       iconType: 'image',
-      position: iconPositions['github'] || { x: 150, y: 170 },
+      position: iconPositions['github'] || { x: 150, y: 290 },
       windowContent: null
     },
     {
@@ -100,26 +113,39 @@ const Desktop = ({ onIconClick }) => {
       name: 'LinkedIn',
       icon: '/images/icons/linkedin.png',
       iconType: 'image',
-      position: iconPositions['linkedin'] || { x: 150, y: 290 },
+      position: iconPositions['linkedin'] || { x: 150, y: 410 },
       windowContent: null
     },
     {
       id: 'games',
       name: 'Games',
-      icon: '/images/icons/filled_folder.png', // Using filled folder for Games
-      iconType: 'image',
-      position: iconPositions['games'] || { x: 150, y: 410 },
+      icon: '🎮',
+      iconType: 'emoji',
+      position: iconPositions['games'] || { x: 250, y: 50 },
       windowContent: {
         title: 'Mini Games',
         component: 'GamesWindow',
         width: 720,
         height: 520,
       }
-    }
+    },
+    {
+      id: 'recyclebin',
+      name: 'Recycle Bin',
+      icon: '🗑️',
+      iconType: 'emoji',
+      position: iconPositions['recyclebin'] || { x: 250, y: 170 },
+      windowContent: {
+        title: 'Recycle Bin',
+        component: 'RecycleBinWindow',
+        width: 500,
+        height: 380,
+      }
+    },
   ];
 
   return (
-    <div className="desktop">
+    <div className="desktop" onContextMenu={handleContextMenu}>
       <div className="desktop-content">
         {desktopIcons.map(icon => (
           <DesktopIcon
@@ -140,8 +166,15 @@ const Desktop = ({ onIconClick }) => {
           />
         ))}
       </div>
+      {contextMenu && (
+        <DesktopContextMenu
+          x={contextMenu.x}
+          y={contextMenu.y}
+          onClose={() => setContextMenu(null)}
+        />
+      )}
     </div>
   );
 };
 
-export default Desktop; 
+export default Desktop;

@@ -5,76 +5,96 @@ import './SkillsWindow.css';
 const SkillsWindow = () => {
   const skillCategories = [
     {
-      category: 'Frontend Development',
+      category: 'Languages',
       skills: [
-        { name: 'React/Redux', level: 90, years: '4 years' },
-        { name: 'JavaScript/ES6+', level: 95, years: '5 years' },
-        { name: 'HTML5/CSS3', level: 95, years: '6 years' },
-        { name: 'TypeScript', level: 85, years: '3 years' },
-        { name: 'Vue.js', level: 75, years: '2 years' }
+        { name: 'Python' },
+        { name: 'JavaScript' },
+        { name: 'TypeScript' },
+        { name: 'Java' },
+        { name: 'C++' },
+        { name: 'SQL' },
       ]
     },
     {
-      category: 'Backend Development',
+      category: 'AI / Machine Learning',
       skills: [
-        { name: 'Node.js/Express', level: 88, years: '4 years' },
-        { name: 'Python/Django', level: 82, years: '3 years' },
-        { name: 'REST APIs', level: 90, years: '4 years' },
-        { name: 'GraphQL', level: 70, years: '2 years' },
-        { name: 'Microservices', level: 75, years: '2 years' }
+        { name: 'PyTorch' },
+        { name: 'TensorFlow' },
+        { name: 'scikit-learn' },
+        { name: 'XGBoost' },
+        { name: 'BERT / Transformers' },
+        { name: 'ONNX Runtime' },
+        { name: 'RAG Pipelines' },
+        { name: 'LLMs' },
       ]
     },
     {
-      category: 'Database & Cloud',
+      category: 'Frameworks & Tools',
       skills: [
-        { name: 'MongoDB', level: 85, years: '3 years' },
-        { name: 'PostgreSQL', level: 80, years: '3 years' },
-        { name: 'AWS Services', level: 78, years: '2 years' },
-        { name: 'Docker', level: 82, years: '2 years' },
-        { name: 'Redis', level: 70, years: '1 year' }
+        { name: 'React' },
+        { name: 'Next.js' },
+        { name: 'FastAPI' },
+        { name: 'Spring Boot' },
+        { name: 'Node.js' },
+        { name: 'spaCy' },
       ]
     },
     {
-      category: 'Tools & Others',
+      category: 'Infrastructure & DevOps',
       skills: [
-        { name: 'Git/GitHub', level: 92, years: '5 years' },
-        { name: 'Webpack/Vite', level: 80, years: '3 years' },
-        { name: 'Jest/Testing', level: 85, years: '3 years' },
-        { name: 'CI/CD', level: 75, years: '2 years' },
-        { name: 'Agile/Scrum', level: 88, years: '4 years' }
+        { name: 'Docker' },
+        { name: 'PostgreSQL' },
+        { name: 'Git' },
+        { name: 'AWS' },
+        { name: 'GCP' },
+        { name: 'Figma' },
       ]
     }
   ];
 
-  // No visual meters — just clean lists
-
   return (
     <div className="skills-window">
-      <h3 className="skills-title">🛠️ Technical Skills</h3>
+      <h3 className="skills-title">Technical Skills</h3>
 
       {skillCategories.map((category, index) => (
         <GroupBox key={index} label={category.category} className="skill-category">
           <ul className="skill-list">
             {category.skills.map((skill, i) => (
               <li key={i} className="skill-item">
-                <span className="skill-check">✔</span>
+                <span className="skill-check">&#10004;</span>
                 <span className="skill-name">{skill.name}</span>
-                <span className="skill-years" aria-label="years of experience">{skill.years}</span>
               </li>
             ))}
           </ul>
         </GroupBox>
       ))}
 
-      <GroupBox label="Currently Learning" className="skill-category">
-        <div className="learning-tags">
-          <span className="tag">Rust</span>
-          <span className="tag">WebAssembly</span>
-          <span className="tag">Machine Learning</span>
-        </div>
+      <GroupBox label="Awards & Competitions" className="skill-category">
+        <ul className="skill-list">
+          <li className="skill-item">
+            <span className="skill-check">&#9733;</span>
+            <span className="skill-name">1st Place -- MadData Hackathon (Qualcomm Track)</span>
+          </li>
+          <li className="skill-item">
+            <span className="skill-check">&#9733;</span>
+            <span className="skill-name">Best AI/ML Hack -- CalHacks (3,000+ participants)</span>
+          </li>
+          <li className="skill-item">
+            <span className="skill-check">&#9733;</span>
+            <span className="skill-name">1st Place -- US Cyber Challenge</span>
+          </li>
+          <li className="skill-item">
+            <span className="skill-check">&#9733;</span>
+            <span className="skill-name">1st Place -- CMU picoCTF</span>
+          </li>
+          <li className="skill-item">
+            <span className="skill-check">&#9733;</span>
+            <span className="skill-name">Top 3% -- USA Astronomy & Astrophysics Olympiad</span>
+          </li>
+        </ul>
       </GroupBox>
     </div>
   );
 };
 
-export default SkillsWindow; 
+export default SkillsWindow;

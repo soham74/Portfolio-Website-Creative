@@ -1,0 +1,39 @@
+.desktop-context-menu {
+  position: fixed;
+  background: #c0c0c0;
+  border: 2px outset #dfdfdf;
+  min-width: 160px;
+  z-index: 1000;
+  padding: 2px;
+  font-family: 'MS Sans Serif', 'Segoe UI', Tahoma, sans-serif;
+  font-size: 12px;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.context-menu-item {
+  padding: 4px 24px 4px 8px;
+  cursor: pointer;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  user-select: none;
+}
+
+.context-menu-item:hover {
+  background: #000080;
+  color: #fff;
+}
+
+.context-menu-separator {
+  height: 1px;
+  background: #808080;
+  margin: 2px 4px;
+  border-bottom: 1px solid #fff;
+}
+
+.context-menu-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+}
