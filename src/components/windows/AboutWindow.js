@@ -68,9 +68,15 @@ const AboutWindow = () => {
               software that actually works in production.
             </p>
             <p className="m-0 mt-2 text-[13px] leading-relaxed text-neutral-800">
-              Currently doing research across three labs -- building AI-powered grant writing tools at the
+              Currently doing research across four labs -- building AI-powered grant writing tools at the
               UW Dept of Surgery, architecting workflow automation with document classifiers at the
-              UW Tech Exploration Lab, and developing crop detection AI at the Wisconsin Institute of Discovery.
+              UW Tech Exploration Lab, developing crop detection AI at the Wisconsin Institute of Discovery,
+              and researching multi-agent LLM systems at SimLab for adaptive, competency-based simulation
+              training in healthcare and education.
+            </p>
+            <p className="m-0 mt-2 text-[13px] leading-relaxed text-neutral-800">
+              Summer 2026: AI Intern at Northwestern Mutual in Milwaukee, applying ML to
+              financial-services problems.
             </p>
           </div>
 
@@ -86,6 +92,8 @@ const AboutWindow = () => {
           <div className="border border-neutral-200 bg-white p-3">
             <h4 className="m-0 mb-2 text-sm font-semibold text-neutral-800">Experience</h4>
             <ul className="m-0 p-0 list-none text-[13px] text-neutral-800 space-y-1">
+              <li>AI Intern -- Northwestern Mutual, Milwaukee (May -- Aug 2026)</li>
+              <li>Research Intern -- SimLab (Multi-Agent LLM Systems)</li>
               <li>Research Assistant -- UW Dept of Surgery, N+1 Institute</li>
               <li>Applied AI Researcher -- UW Tech Exploration Lab</li>
               <li>Undergraduate Researcher -- WID, Mura Lab</li>
